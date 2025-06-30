@@ -74,9 +74,9 @@ public class InventarioController {
     public ResponseEntity<String> eliminarInventario(@PathVariable int idInventario) {
         String resultado = inventarioService.eliminarInventario(idInventario);
         if (resultado.equals("Inventario eliminado correctamente")) {
-            return ResponseEntity.noContent().build(); // 204 No Content
+            return ResponseEntity.ok(resultado); // 200 OK 
         }
-        return ResponseEntity.status(404).body(resultado); // 404 Not Found
+        return ResponseEntity.status(404).body(resultado); // Error
     }
 
     @Operation(summary = "Obtener información del perfume desde inventario (conexión entre microservicios)")
